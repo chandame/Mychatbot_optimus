@@ -1,0 +1,132 @@
+<html>
+<head>
+  <title>{% block title %}Optimus{% endblock %}</title>
+
+  <meta charset="utf-8"/>
+
+  <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+{% block js %}
+  <script type="text/javascript" src="/static/js/script.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <script type="text/javascript" src="/static/js/dev-vue.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#img_toggle").click(function(){
+    $("#myForm").toggle();
+  });
+});    
+$(document).ready(function(){
+  $("#status").click(function(){
+    $("#status_show").toggle();
+  });
+});        
+
+</script>
+{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg bg-dark">
+  
+  <a href="#"><img src="https://cdn.iconscout.com/icon/free/png-256/robot-86-404724.png" width="50" height="34"></a>
+ 
+  <a class="navbar-brand" href="/./">Optimus</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" id="status">Status <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="report">Report</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Help</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact us</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<Body background="static/img/c.png" style="background-size: 100% 100%;"></Body>
+  <h2 style="text-align:center; background-color:rgb(225, 241, 226);" >Welcome to Auto-ONE Single Automation Platform</h2>
+
+
+  <div id="body" class="sticky">
+  <!-- Image and text -->
+        <div id="chat-circle" class="btn btn-raised">
+            <div id="chat-overlay"></div>
+            <!--<i class="material-icons">android</i>-->
+            <img class="chat-circle_robot" src="https://cdn.iconscout.com/icon/free/png-256/robot-86-404724.png" id="img_toggle">
+        </div>
+    </div>
+
+<div class="b" id="myForm">
+  <!-- Image and text -->
+<nav class="navbar navbar-dark bg-primary sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="https://cdn.iconscout.com/icon/free/png-256/robot-86-404724.png" alt="" width="50" height="34" class="d-inline-block align-">
+      Hi! I'm Optimus .
+    </a>
+  </div>
+</nav>
+                <!--welcome message-->
+                <div class="chat-box-welcome__header">
+                                  
+                    
+
+               
+   <div id="app" class="container top-padding">
+  	<div class="row">
+  		<div class="col-md-12">
+  			<div class="card col-md-6" v-for="message in messages"  v-bind:class="{ 'user-message': message.user,  'chat-message': message.chat_bot, 'offset-md-6': message.chat_bot}">
+	  			<div class="card-body" size="1000">
+	  				[[message.text]]
+	  			</div>
+	  		</div>
+  		</div>
+	  		
+  	</div>
+  	<div id="text-box" class="row top-padding">
+  		<div class="col-md-12">
+  			<textarea class="form-control" rows="2" cols="100" v-bind:placeholder="placeholder" v-model="input" v-bind:class="{ 'border-danger': send_blank}" v-on:change="check_content"></textarea>
+  			<i class="fas fa-arrow-circle-right send-btn" v-on:click="add_message"></i>
+
+  		</div>
+  	</div>
+  </div>
+</div>
+
+                </div>
+              </div>
+
+              <form class="form-inline" id="status_show" style="display:none;">
+                <div class="form-group mb-2">
+                  <label for="staticEmail2" class="sr-only">Email</label>
+                  <h3 style="color:rgb(242, 242, 250);">Enter the request id here.</h3>
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                  <label for="inputPassword2" class="sr-only">Request id.</label>
+                  <input type="text" class="form-control" id="inputPassword2" placeholder="Request id here  ">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Check Status</button>
+              </form>
+
+{% endblock %}
+
+</body>
+</html>
+
